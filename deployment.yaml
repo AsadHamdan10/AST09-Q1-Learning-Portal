@@ -20,7 +20,7 @@ spec:
             - containerPort: 80
           readinessProbe:
             httpGet:
-              path: /
+              path: /faulty-check
               port: 80
             initialDelaySeconds: 3
             periodSeconds: 5
@@ -38,6 +38,7 @@ metadata:
   name: learning-portal-service
 spec:
   type: NodePort
+  progressDeadlineSeconds: 60
   selector:
     app: learning-portal
   ports:
